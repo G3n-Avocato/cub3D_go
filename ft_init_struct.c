@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   ft_init_struct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 16:54:26 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/24 20:58:54 by lamasson         ###   ########.fr       */
+/*   Created: 2023/07/24 21:02:42 by lamasson          #+#    #+#             */
+/*   Updated: 2023/07/24 22:02:36 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "cub3D.h"
 
-# include "libft/libft.h"
-# include <stdio.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <errno.h>
-# include <string.h>
 
-typedef struct	s_data_fd
+void	ft_init_struct_data(t_data_fd *data)
 {
-	char	**tab;
-	char	*path_no;
-	char	*path_so;
-	char	*path_we;
-	char	*path_ea;
-	int		*f;
-	int		*c;
-}t_data_fd;
-
-char	*parsing_intro(char **argv, int argc);
+	
 
 
-#endif
+
+}
