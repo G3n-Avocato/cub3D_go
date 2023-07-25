@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 21:02:23 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/25 00:02:53 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/25 13:43:50 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	check_id(char *line)
 	return (-1);
 }
 
-static char	*rec_path_text(char *line, t_data_fd *data)
+static char	*rec_path_text(char *line)
 {
 	int	i;
 	int	start;
@@ -58,12 +58,11 @@ static char	*rec_path_text(char *line, t_data_fd *data)
 	return (path);
 }
 
-
 static int	parsing_texture(char *line, t_data_fd *data, int id)
 {
 	char	*path;
 
-	path = rec_path_text(line, data);
+	path = rec_path_text(line);
 	if (!path)
 	{
 		//parsing erreur
@@ -95,7 +94,7 @@ int	ft_parse_line(char *line, t_data_fd *data)
 		return (0);
 	else
 	{
-		parse_error();
+//		parse_error();
 		return (1);
 	}
 	return (0);

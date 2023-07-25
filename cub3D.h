@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:54:26 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/24 20:58:54 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/25 13:29:37 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct	s_data_fd
 }t_data_fd;
 
 char	*parsing_intro(char **argv, int argc);
-
+int		ft_parse_line(char *line, t_data_fd *data);
+int		parsing_colors(char *line, t_data_fd *data, int id);
 
 #endif
