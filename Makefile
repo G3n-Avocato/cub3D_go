@@ -6,7 +6,7 @@
 #    By: lamasson <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 13:34:21 by lamasson          #+#    #+#              #
-#    Updated: 2023/07/25 13:58:49 by lamasson         ###   ########.fr        #
+#    Updated: 2023/07/26 13:25:55 by lamasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,16 +24,18 @@ SRCS	= ft_parsing.c \
 
 OBJS	= ${SRCS:%.c=%.o}
 
-LIBFT	= libft
+LIBFT	= ./libft
+
+LIB		= ./libft/libft.a
+
+%.o: %.c
+		@${CC} ${CFLAGS} -c $< -o $@
 
 all:	${NAME}
 
 ${NAME}: ${OBJS} 
 		make bonus -C ${LIBFT}
-		${CC} ${CFLAGS} -L ${LIBFT} -lft -o ${NAME} ${OBJS}
-
-%.o: %.c
-	${CC} ${CFLAGS} -c $< -o $@
+		${CC} ${CFLAGS} ${OBJS} ${LIB} -o ${NAME}
 
 clean:
 		make -s -C ${LIBFT} clean

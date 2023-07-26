@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 21:02:23 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/25 13:43:50 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/26 14:08:04 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,12 @@ static char	*rec_path_text(char *line)
 	while (line[i] != '.' && line[i + 1] != '/')
 		i++;
 	start = i;
-	while (line[i] != ' ' || line[i] != '\t')
+	while (line[i] != '\0')
+	{
+		if (line[i] == ' ' || line[i] == '\t' || line[i] == '\n')
+			break ;
 		i++;
+	}
 	path = ft_substr(line, start, i - start);
 	if (!path)
 		return (NULL);
