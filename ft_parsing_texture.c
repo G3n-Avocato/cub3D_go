@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 21:02:23 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/27 16:20:46 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/28 00:25:27 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,11 @@ static int	parsing_texture(char *line, t_data_fd *data, int id)
 		data->path_ea = path;
 	return (0);
 }
-
+//avant rec map check si un element en trop 
+//au moment de rec la map check si on a tous les element necessaire sinon error un element manquant 
+//check si les path sont accessible erreur path non accessible 
+//fichier parsing texture error 
+//
 int	ft_parse_line(char *line, t_data_fd *data)
 {
 	int	i;

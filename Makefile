@@ -6,7 +6,7 @@
 #    By: lamasson <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 13:34:21 by lamasson          #+#    #+#              #
-#    Updated: 2023/07/27 14:17:59 by lamasson         ###   ########.fr        #
+#    Updated: 2023/07/27 23:40:48 by lamasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ NAME	= cube3D
 
 SRCS	= ft_parsing.c \
 		  ft_parsing_color.c \
+		  ft_parsing_color_error.c \
 		  ft_parsing_texture.c \
 		  ft_init_struct.c
 

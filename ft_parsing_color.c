@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:43:51 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/27 19:13:20 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/27 23:31:19 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,39 +77,13 @@ static int	rec_rgb(char *line, int **col)
 	return (0);
 }
 
-static int	check_data_rgb_error(char *line)
-{
-	int	i;
-	int	nb_v;
-	int	cmp;
-
-	i = 1;
-	nb_v = 0;
-	cmp = 0;
-	while (line[i] == ' ' || line[i] == '\t')
-		i++;
-	while (line[i])
-	{
-		if (line[i] == ',')
-			nb_v++;
-		if (line[i] == '\n')
-			break ;
-		if (line[i] == ' ' || line[i] == '\t')
-			i++;
-		else if ((line[i] != ',' && !ft_isdigit(line[i])) || nb_v > 2)
-			return (1);
-		else
-			i++;
-	}
-//check fin de la ligne tkt
-	return (0);
-}
-
 int	parsing_colors(char *line, t_data_fd *data, int id)
 {
 	int	b;
 	
-	b = check_data_rgb_error(line);
+	b = check_digit_rgb_error(line);
+	if (b == 0)
+		b = check_data_rgb_error(line);
 	if (id == 5 && b == 0)
 		b = rec_rgb(line, &data->f);
 	else if (id == 6 && b == 0)
