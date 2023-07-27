@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 21:02:23 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/26 14:08:04 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/27 16:20:46 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	check_id(char *line)
 	i = 0;
 	while (line[i] == ' ' || line[i] == '\t')
 		i++;
-	if (line[i] == '\0')
+	if (line[i] == '\0' || line[i] == '\n')
 		return (-2);
 	while (line[i])
 	{
@@ -86,14 +86,16 @@ static int	parsing_texture(char *line, t_data_fd *data, int id)
 int	ft_parse_line(char *line, t_data_fd *data)
 {
 	int	i;
+	int	b;
 	int	id;	
 
 	i = 0;
+	b = 0;
 	id = check_id(line);
 	if (id >= 1 && id <= 4)
-		parsing_texture(line, data, id);
+		b = parsing_texture(line, data, id);
 	else if (id == 5 || id == 6)
-		parsing_colors(line, data, id);
+		b = parsing_colors(line, data, id);
 	else if (id == -2)
 		return (0);
 	else
@@ -101,5 +103,7 @@ int	ft_parse_line(char *line, t_data_fd *data)
 //		parse_error();
 		return (1);
 	}
+	if (b == 1)
+		return (1);
 	return (0);
 }
