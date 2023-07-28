@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:54:26 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/27 23:35:04 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/29 00:00:54 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,16 @@ int		parsing_colors(char *line, t_data_fd *data, int id);
 int	check_digit_rgb_error(char *line);
 int	check_data_rgb_error(char *line);
 
+//	ft_parsing_texture.c	//
 
+//	ft_parsing_texture_error.c	//
+int	printf_error(int id, char *str);
+int	check_end_line_texture(char *line, int i);
+int	check_path_texture(char *path, int id);
+int	check_nb_element(t_data_fd *data, int id);
+
+//	ft_init_struct.c	//
 void	ft_free_struct(t_data_fd *data);
+void	ft_init_struct(t_data_fd *data);
 
 #endif

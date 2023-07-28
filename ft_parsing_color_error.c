@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 23:28:54 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/28 00:01:06 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/28 23:57:30 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_digit_rgb_error(char *line)
 	return (0);
 }
 
-static int check_end_line(char *line, int i, int cmp)
+static int check_end_line_rgb(char *line, int i, int cmp)
 {
 	if (line[i] == '\0' && cmp != 2)
 		return (1);
@@ -91,7 +91,7 @@ int	check_data_rgb_error(char *line)
 		else
 			i++;
 	}
-	if (check_end_line(line, i, cmp) == 1)
+	if (check_end_line_rgb(line, i, cmp) == 1)
 		return (1);
 	return (0);
 }

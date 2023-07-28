@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 21:02:42 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/27 16:23:23 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/29 00:03:56 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,16 @@ void	ft_free_struct(t_data_fd *data)
 		free(data->f);
 	if (data->c)
 		free(data->c);
+}
+
+void	ft_init_struct(t_data_fd *data)
+{
+	data->path_no = NULL;
+	data->path_so = NULL;
+	data->path_we = NULL;
+	data->path_ea = NULL;
+	data->f = malloc(sizeof(int) * 3);
+	data->c = malloc(sizeof(int) * 3);
+	data->f[0] = -1;
+	data->c[0] = -1;
 }

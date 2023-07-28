@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:52:55 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/27 18:29:44 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/28 23:21:46 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,20 +74,21 @@ int main(int argc, char **argv)
 	path = parsing_intro(argv, argc);
 	if (!path)
 		return (1);
-	data.f = malloc(sizeof(int) * 3);
-	data.c = malloc(sizeof(int) * 3);
+	ft_init_struct(&data);
 	if (recover_file(path, &data) == 1)
 	{
 		ft_free_struct(&data);
 		return (1);
 	}
+
+
 	printf("%s\n", path);
 	printf("no %s\n", data.path_no);
 	printf("so %s\n", data.path_so);
 	printf("we %s\n", data.path_we);
 	printf("ea %s\n", data.path_ea);
 
-	int i = 0;
+/*	int i = 0;
 	while (i < 3)
 	{
 		if (data.f[i])
@@ -95,7 +96,7 @@ int main(int argc, char **argv)
 		if (data.c[i])
 			printf("c %d - %d\n", i, data.c[i]);
 		i++;
-	}
+	}*/
 	ft_free_struct(&data);
 	return (0);
 }

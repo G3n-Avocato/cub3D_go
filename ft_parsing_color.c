@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:43:51 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/27 23:31:19 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/29 00:00:22 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static int	rec_rgb(char *line, int **col)
 int	parsing_colors(char *line, t_data_fd *data, int id)
 {
 	int	b;
-	
+
 	b = check_digit_rgb_error(line);
 	if (b == 0)
 		b = check_data_rgb_error(line);
@@ -88,12 +88,9 @@ int	parsing_colors(char *line, t_data_fd *data, int id)
 		b = rec_rgb(line, &data->f);
 	else if (id == 6 && b == 0)
 		b = rec_rgb(line, &data->c);
-	if (b > 0)
+	if (b == 1)
 	{
-		if (id == 5)
-			printf("Error\nWrong data for element F\n");
-		else if (id == 6)
-			printf("Error\nWrong data for element C\n");
+		printf_error(id, "Wrong data");
 		return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 21:02:23 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/28 00:25:27 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/29 00:04:07 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char	*rec_path_text(char *line)
 	char	*path;
 
 	i = 0;
-	while (line[i] != '.' && line[i + 1] != '/')
+	while (line[i] != '.' && line[i + 1] != '/') //while (line[i] == ' ' || line[i] == '\t')
 		i++;
 	start = i;
 	while (line[i] != '\0')
@@ -58,7 +58,12 @@ static char	*rec_path_text(char *line)
 	}
 	path = ft_substr(line, start, i - start);
 	if (!path)
+		exit (1);
+	if (check_end_line_texture(line, i) == 1)
+	{
+		free(path);
 		return (NULL);
+	}
 	return (path);
 }
 
@@ -67,11 +72,6 @@ static int	parsing_texture(char *line, t_data_fd *data, int id)
 	char	*path;
 
 	path = rec_path_text(line);
-	if (!path)
-	{
-		//parsing erreur
-		return (1);
-	}
 	if (id == 1)
 		data->path_no = path;
 	else if (id == 2)
@@ -80,13 +80,18 @@ static int	parsing_texture(char *line, t_data_fd *data, int id)
 		data->path_we = path;
 	else if (id == 4)
 		data->path_ea = path;
+	if (!path)
+	{
+		printf_error(id, "Wrong data");
+		return (1);
+	}
+	if (check_path_texture(path, id) == 1)
+		return (1);
 	return (0);
 }
 //avant rec map check si un element en trop 
 //au moment de rec la map check si on a tous les element necessaire sinon error un element manquant 
-//check si les path sont accessible erreur path non accessible 
-//fichier parsing texture error 
-//
+
 int	ft_parse_line(char *line, t_data_fd *data)
 {
 	int	i;
@@ -96,16 +101,19 @@ int	ft_parse_line(char *line, t_data_fd *data)
 	i = 0;
 	b = 0;
 	id = check_id(line);
+	if (check_nb_element(data, id) == 1)
+		return (1);
 	if (id >= 1 && id <= 4)
 		b = parsing_texture(line, data, id);
 	else if (id == 5 || id == 6)
 		b = parsing_colors(line, data, id);
 	else if (id == -2)
 		return (0);
-	else
+	else if (id == -1)
 	{
-//		parse_error();
-		return (1);
+		//check si tous les elements si non stop
+//		parsing map + map error
+		return (0);
 	}
 	if (b == 1)
 		return (1);
