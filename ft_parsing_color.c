@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:43:51 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/29 00:00:22 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/29 20:19:33 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	parsing_colors(char *line, t_data_fd *data, int id)
 {
 	int	b;
 
-	b = check_digit_rgb_error(line);
+	b = check_digit_error(line);
 	if (b == 0)
 		b = check_data_rgb_error(line);
 	if (id == 5 && b == 0)

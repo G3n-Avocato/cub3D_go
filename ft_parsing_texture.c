@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 21:02:23 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/29 00:04:07 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/29 20:23:46 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,32 @@ static int	check_id(char *line)
 	return (-1);
 }
 
-static char	*rec_path_text(char *line)
+int	rec_pos_element(char *line)
 {
 	int	i;
-	int	start;
-	char	*path;
 
 	i = 0;
-	while (line[i] != '.' && line[i + 1] != '/') //while (line[i] == ' ' || line[i] == '\t')
+	while (!ft_isalpha(line[i]))
 		i++;
+	while (ft_isalpha(line[i]))
+		i++;
+	while (line[i] == ' ' || line[i] == '\t')
+		i++;
+	return (i);
+}
+
+static char	*rec_path_text(char *line)
+{
+	int		i;
+	int		start;
+	char	*path;
+
+	i = rec_pos_element(line);
 	start = i;
 	while (line[i] != '\0')
 	{
 		if (line[i] == ' ' || line[i] == '\t' || line[i] == '\n')
-			break ;
+			break ; 
 		i++;
 	}
 	path = ft_substr(line, start, i - start);
@@ -89,8 +101,6 @@ static int	parsing_texture(char *line, t_data_fd *data, int id)
 		return (1);
 	return (0);
 }
-//avant rec map check si un element en trop 
-//au moment de rec la map check si on a tous les element necessaire sinon error un element manquant 
 
 int	ft_parse_line(char *line, t_data_fd *data)
 {
@@ -111,7 +121,8 @@ int	ft_parse_line(char *line, t_data_fd *data)
 		return (0);
 	else if (id == -1)
 	{
-		//check si tous les elements si non stop
+		if (check_if_all_init(data) == 1)
+			return (1);
 //		parsing map + map error
 		return (0);
 	}

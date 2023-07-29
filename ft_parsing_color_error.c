@@ -6,23 +6,21 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 23:28:54 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/28 23:57:30 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/29 20:19:06 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	check_digit_rgb_error(char *line)
+int	check_digit_error(char *line)
 {
 	int	i;
 	int	nb_v;
 	int	cmp;
 
-	i = 1;
+	i = rec_pos_element(line);
 	nb_v = 0;
 	cmp = 0;
-	while (line[i] == ' ' || line[i] == '\t')
-		i++;
 	while (line[i])
 	{
 		if (line[i] == ',')
@@ -72,7 +70,7 @@ int	check_data_rgb_error(char *line)
 	int	b;
 	int	cmp;
 
-	i = 1;
+	i = 0;
 	b = 0;
 	cmp = 0;
 	while (!ft_isdigit(line[i]))

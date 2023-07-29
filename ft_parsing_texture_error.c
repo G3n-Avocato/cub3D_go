@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 21:37:29 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/29 00:07:36 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/29 19:48:14 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,29 @@ int	check_nb_element(t_data_fd *data, int id)
 	if (b == 1)
 		printf_error(id, "Too many arguments");
 	return (1);
+}
+
+int	check_if_all_init(t_data_fd *data)
+{
+	int id;
+
+	id = 0;
+	if (!data->path_no)
+		id = 1;
+	else if (!data->path_so)
+		id = 2;
+	else if (!data->path_we)
+		id = 3;
+	else if (!data->path_ea)
+		id = 4;
+	else if (data->f[0] == -1)
+		id = 5;
+	else if (data->c[0] == -1)
+		id = 6;
+	if (id != 0)
+	{
+		printf_error(id, "No data");
+		return (1);
+	}
+	return (0);
 }
