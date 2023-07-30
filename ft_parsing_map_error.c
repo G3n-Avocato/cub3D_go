@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parsing_map.c                                   :+:      :+:    :+:   */
+/*   ft_parsing_map_error.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/31 00:29:25 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/31 01:30:07 by lamasson         ###   ########.fr       */
+/*   Created: 2023/07/31 00:36:04 by lamasson          #+#    #+#             */
+/*   Updated: 2023/07/31 01:30:11 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	ft_fill_tab_map(t_data_fd *data, char *line)
+int check_map_char_line(char *line)
 {
 	int	i;
 
 	i = 0;
-	while
-
-
-}
-
-int	ft_parsing_map(t_data_fd *data, char *line)
-{
-	if (ft_find_map(line) == 1)
-		return (1 ou -2);
-	ft_fill_tab_map(data, line);
-
-
-
-
-
-
+	if (line[i] == )
+	while (line[i])
+	{
+		if (line[i] == '0' || line[i] == '1')
+			i++;
+		else if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
+			i++;
+		else if (line[i] == '\n' || line[i] == ' ' || line[i] == '\t')
+			i++;
+		else
+			return (1);
+	}
+	return (1);
 }

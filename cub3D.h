@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:54:26 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/30 11:13:33 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/31 01:28:00 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 typedef struct	s_data_fd
 {
 	char			**tab;
-	struct s_map	**input;
+	struct s_map	*input;
 	char			*path_no;
 	char			*path_so;
 	char			*path_we;
@@ -37,8 +37,9 @@ typedef	struct s_map
 {
 	int		x;
 	int		y;
+	int		j;
 	int		pos_s[2];
-	char	c_point;
+	char	pos_j;
 }t_map;
 
 //	ft_parse.c	//
@@ -65,9 +66,10 @@ int	check_if_all_init(t_data_fd *data);
 //	ft_init_struct.c	//
 void	ft_free_struct(t_data_fd *data);
 void	ft_init_struct(t_data_fd *data);
+void	ft_init_tab_map(t_data_fd *data);
 
 //	ft_parsing_map.c	//
 int	first_read_map(char *path, t_data_fd *data);
-
+int	ft_find_map(char *line);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:52:55 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/30 11:15:41 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/31 00:22:16 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int	recover_file(char *path, t_data_fd *data)
 		line = get_next_line(fd);
 	}
 	close(fd);
-	//if (check == 1)
-	//	return (1);
+	if (check == 1)
+		return (1);
 	return (0);
 }
 
@@ -80,33 +80,12 @@ int main(int argc, char **argv)
 		ft_free_struct(&data);
 		return (1);
 	}
-
-
-	printf("x = %d\n", data.input[0]->x);
-
-	printf("y = %d\n", data.input[0]->y);
-/*	if (recover_file(path, &data) == 1)
+	ft_init_tab_map(&data);
+	if (recover_file(path, &data) == 1)
 	{
 		ft_free_struct(&data);
 		return (1);
 	}
-////
-
-	printf("%s\n", path);
-	printf("no %s\n", data.path_no);
-	printf("so %s\n", data.path_so);
-	printf("we %s\n", data.path_we);
-	printf("ea %s\n", data.path_ea);*/
-
-/*	int i = 0;
-	while (i < 3)
-	{
-		if (data.f[i])
-			printf("f %d - %d\n", i, data.f[i]);
-		if (data.c[i])
-			printf("c %d - %d\n", i, data.c[i]);
-		i++;
-	}*/
 
 
 	ft_free_struct(&data);
