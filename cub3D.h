@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:54:26 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/30 00:46:59 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/30 11:13:33 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,9 @@ int	check_if_all_init(t_data_fd *data);
 //	ft_init_struct.c	//
 void	ft_free_struct(t_data_fd *data);
 void	ft_init_struct(t_data_fd *data);
+
+//	ft_parsing_map.c	//
+int	first_read_map(char *path, t_data_fd *data);
+
 
 #endif

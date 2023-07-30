@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 21:02:42 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/30 00:41:12 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/30 11:17:47 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	ft_init_struct(t_data_fd *data)
 	data->c = malloc(sizeof(int) * 3);
 	data->f[0] = -1;
 	data->c[0] = -1;
+
+	data->input[0]->c_point = malloc(sizeof(char) * 1);
 	data->input[0]->c_point = 'A';
 	data->input[0]->pos_s[0] = -5;
 }
