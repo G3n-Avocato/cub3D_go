@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 20:25:53 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/31 01:11:10 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/31 21:56:25 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,9 @@ int	first_read_map(char *path, t_data_fd *data)
 	}
 	if (rec_data_map(line, fd, data) == 1)
 	{
-			printf("Error\nInvalid Map\n");
-			return (1);
+		close(fd);
+		printf("Error\nInvalid Map\n");
+		return (1);
 	}
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 21:02:23 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/29 20:23:46 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/31 23:00:06 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int	check_id(char *line)
+int	check_id(char *line)
 {
 	int	i;
 
@@ -79,7 +79,7 @@ static char	*rec_path_text(char *line)
 	return (path);
 }
 
-static int	parsing_texture(char *line, t_data_fd *data, int id)
+int	parsing_texture(char *line, t_data_fd *data, int id)
 {
 	char	*path;
 
@@ -98,35 +98,6 @@ static int	parsing_texture(char *line, t_data_fd *data, int id)
 		return (1);
 	}
 	if (check_path_texture(path, id) == 1)
-		return (1);
-	return (0);
-}
-
-int	ft_parse_line(char *line, t_data_fd *data)
-{
-	int	i;
-	int	b;
-	int	id;	
-
-	i = 0;
-	b = 0;
-	id = check_id(line);
-	if (check_nb_element(data, id) == 1)
-		return (1);
-	if (id >= 1 && id <= 4)
-		b = parsing_texture(line, data, id);
-	else if (id == 5 || id == 6)
-		b = parsing_colors(line, data, id);
-	else if (id == -2)
-		return (0);
-	else if (id == -1)
-	{
-		if (check_if_all_init(data) == 1)
-			return (1);
-//		parsing map + map error
-		return (0);
-	}
-	if (b == 1)
 		return (1);
 	return (0);
 }

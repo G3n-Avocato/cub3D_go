@@ -6,28 +6,44 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 00:36:04 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/31 01:30:11 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/31 23:29:26 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int check_map_char_line(char *line)
+static int	check_pos_player(t_data_fd *data)
+{
+	if (data->input->pos_j == 'A')
+	{
+		printf("Error\nNo position for the player on the map\n");
+		return (1);
+	}
+	return (0);
+}
+
+int	check_wall_one()
+
+
+int	second_read_map(t_data_fd *data)
 {
 	int	i;
+	int j;
 
 	i = 0;
-	if (line[i] == )
-	while (line[i])
+	j = 0;
+	if (check_pos_player(data) == 1)
+		return (1);
+	while (data->tab[j])
 	{
-		if (line[i] == '0' || line[i] == '1')
+		while (data->tab[i])
+		{
+
+
+
 			i++;
-		else if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
-			i++;
-		else if (line[i] == '\n' || line[i] == ' ' || line[i] == '\t')
-			i++;
-		else
-			return (1);
+		}
+		j++;
 	}
-	return (1);
+
 }

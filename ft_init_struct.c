@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 21:02:42 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/31 01:28:40 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/31 22:06:10 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,23 @@ void	ft_init_struct(t_data_fd *data)
 	data->c[0] = -1;
 	data->input = malloc(sizeof(t_map));
 	data->input->j = 0;
+	data->input->i = 0;
 	data->input->pos_j = 'A';
 	data->input->pos_s[0] = -5;
+}
+
+void	ft_free_tab_map(t_data_fd *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->input->y)
+	{
+		if (data->tab[i])
+			free(data->tab[i]);
+		i++;
+	}
+	free(data->tab);
 }
 
 void	ft_init_tab_map(t_data_fd *data)
@@ -51,7 +66,7 @@ void	ft_init_tab_map(t_data_fd *data)
 
 	i = 0;
 	data->tab = malloc(sizeof(char *) * (data->input->y + 1));
-	while (i < data->input->x)
+	while (i < data->input->y)
 	{
 		data->tab[i] = malloc(sizeof(char) * (data->input->x + 1));
 		i++;

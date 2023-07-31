@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:54:26 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/31 01:28:00 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/31 23:03:23 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,38 +38,45 @@ typedef	struct s_map
 	int		x;
 	int		y;
 	int		j;
+	int		i;
 	int		pos_s[2];
 	char	pos_j;
 }t_map;
 
 //	ft_parse.c	//
 char	*parsing_intro(char **argv, int argc);
-int		ft_parse_line(char *line, t_data_fd *data);
+int		recover_file(char *path, t_data_fd *data);
 
 //	ft_parsing_color.c	//
 int		parsing_colors(char *line, t_data_fd *data, int id);
 
 //	ft_parsing_color_error.c	//
-int	check_digit_error(char *line);
-int	check_data_rgb_error(char *line);
+int		check_digit_error(char *line);
+int		check_data_rgb_error(char *line);
 
 //	ft_parsing_texture.c	//
-int	rec_pos_element(char *line);
+int		rec_pos_element(char *line);
+int		check_id(char *line);
+int		parsing_texture(char *line, t_data_fd *data, int id);
 
 //	ft_parsing_texture_error.c	//
-int	printf_error(int id, char *str);
-int	check_end_line_texture(char *line, int i);
-int	check_path_texture(char *path, int id);
-int	check_nb_element(t_data_fd *data, int id);
-int	check_if_all_init(t_data_fd *data);
+int		printf_error(int id, char *str);
+int		check_end_line_texture(char *line, int i);
+int		check_path_texture(char *path, int id);
+int		check_nb_element(t_data_fd *data, int id);
+int		check_if_all_init(t_data_fd *data);
 
 //	ft_init_struct.c	//
 void	ft_free_struct(t_data_fd *data);
 void	ft_init_struct(t_data_fd *data);
 void	ft_init_tab_map(t_data_fd *data);
+void	ft_free_tab_map(t_data_fd *data);
 
 //	ft_parsing_map.c	//
-int	first_read_map(char *path, t_data_fd *data);
-int	ft_find_map(char *line);
+int		ft_parsing_map(t_data_fd *data, char *line);
+
+//	ft_parsing_map_utils.c	//
+int		first_read_map(char *path, t_data_fd *data);
+int		ft_find_map(char *line);
 
 #endif

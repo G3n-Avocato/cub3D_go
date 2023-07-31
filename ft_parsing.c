@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:52:55 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/31 00:22:16 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/07/31 23:07:55 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,35 @@ char	*parsing_intro(char **arg, int argc)
 	}
 	close(fd);
 	return (path);
+}
+
+static int	ft_parse_line(char *line, t_data_fd *data)
+{
+	int	i;
+	int	b;
+	int	id;	
+
+	i = 0;
+	b = 0;
+	id = check_id(line);
+	if (check_nb_element(data, id) == 1)
+		return (1);
+	if (id >= 1 && id <= 4)
+		b = parsing_texture(line, data, id);
+	else if (id == 5 || id == 6)
+		b = parsing_colors(line, data, id);
+	else if (id == -2)
+		return (0);
+	else if (id == -1)
+	{
+		if (check_if_all_init(data) == 1)
+			return (1);
+		if (ft_parsing_map(data, line) == 1)
+			return (1);
+	}
+	if (b == 1)
+		return (1);
+	return (0);
 }
 
 int	recover_file(char *path, t_data_fd *data)
@@ -83,11 +112,23 @@ int main(int argc, char **argv)
 	ft_init_tab_map(&data);
 	if (recover_file(path, &data) == 1)
 	{
+		ft_free_tab_map(&data);
 		ft_free_struct(&data);
 		return (1);
 	}
+	second_read_map(&data);
+
+	int i = 0;
+	while (i < data.input->y)
+	{
+		printf("%s \n", data.tab[i]);
+		i++;
+	}
+	printf("%c, x = %d y = %d\n", data.input->pos_j, data.input->pos_s[0], data.input->pos_s[1]);
 
 
+
+	ft_free_tab_map(&data);
 	ft_free_struct(&data);
 	return (0);
 }

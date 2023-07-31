@@ -6,7 +6,7 @@
 #    By: lamasson <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 13:34:21 by lamasson          #+#    #+#              #
-#    Updated: 2023/07/30 11:16:19 by lamasson         ###   ########.fr        #
+#    Updated: 2023/07/31 20:53:12 by lamasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS	= ft_parsing.c \
 		  ft_parsing_texture.c \
 		  ft_parsing_texture_error.c \
 		  ft_init_struct.c \
-		  ft_parsing_map.c
+		  ft_parsing_map.c \
+		  ft_parsing_map_utils.c
 
 OBJS	= ${SRCS:%.c=%.o}
 
