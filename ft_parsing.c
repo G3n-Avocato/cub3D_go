@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:52:55 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/31 23:07:55 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/08/01 20:07:50 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	second_read_map(&data);
-
+/*
 	int i = 0;
 	while (i < data.input->y)
 	{
@@ -125,7 +125,7 @@ int main(int argc, char **argv)
 		i++;
 	}
 	printf("%c, x = %d y = %d\n", data.input->pos_j, data.input->pos_s[0], data.input->pos_s[1]);
-
+*/
 
 
 	ft_free_tab_map(&data);

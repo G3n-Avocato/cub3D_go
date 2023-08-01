@@ -6,7 +6,7 @@
 /*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:54:26 by lamasson          #+#    #+#             */
-/*   Updated: 2023/07/31 23:03:23 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:01:03 by lamasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,9 @@ int		ft_parsing_map(t_data_fd *data, char *line);
 //	ft_parsing_map_utils.c	//
 int		first_read_map(char *path, t_data_fd *data);
 int		ft_find_map(char *line);
+
+//	ft_parsing_map_error.c	//
+int	second_read_map(t_data_fd *data);
+
 
 #endif
