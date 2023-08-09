@@ -65,7 +65,7 @@ static char	*rec_path_text(char *line)
 	while (line[i] != '\0')
 	{
 		if (line[i] == ' ' || line[i] == '\t' || line[i] == '\n')
-			break ; 
+			break ;
 		i++;
 	}
 	path = ft_substr(line, start, i - start);

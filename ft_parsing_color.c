@@ -12,7 +12,7 @@
 
 #include "cub3D.h"
 
-static int check_data_rec_rgb(int **col, int j)
+static int	check_data_rec_rgb(int **col, int j)
 {
 	int	i;
 
@@ -80,10 +80,12 @@ static int	rec_rgb(char *line, int **col)
 int	parsing_colors(char *line, t_data_fd *data, int id)
 {
 	int	b;
+	int	i;
 
+	i = 0;
 	b = check_digit_error(line);
 	if (b == 0)
-		b = check_data_rgb_error(line);
+		b = check_data_rgb_error(line, i);
 	if (id == 5 && b == 0)
 		b = rec_rgb(line, &data->f);
 	else if (id == 6 && b == 0)

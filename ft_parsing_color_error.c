@@ -16,11 +16,9 @@ int	check_digit_error(char *line)
 {
 	int	i;
 	int	nb_v;
-	int	cmp;
 
 	i = rec_pos_element(line);
 	nb_v = 0;
-	cmp = 0;
 	while (line[i])
 	{
 		if (line[i] == ',')
@@ -37,7 +35,7 @@ int	check_digit_error(char *line)
 	return (0);
 }
 
-static int check_end_line_rgb(char *line, int i, int cmp)
+static int	check_end_line_rgb(char *line, int i, int cmp)
 {
 	if (line[i] == '\0' && cmp != 2)
 		return (1);
@@ -64,20 +62,18 @@ static int	len_digit_rgb(char c, int cmp)
 	return (0);
 }
 
-int	check_data_rgb_error(char *line)
+int	check_data_rgb_error(char *line, int i)
 {
-	int	i;
 	int	b;
 	int	cmp;
 
-	i = 0;
 	b = 0;
 	cmp = 0;
 	while (!ft_isdigit(line[i]))
 		i++;
 	while (line[i])
 	{
-		if ((line[i] == ' ' && cmp  == 3) || (line[i] == '\t' && cmp == 3))
+		if ((line[i] == ' ' && cmp == 3) || (line[i] == '\t' && cmp == 3))
 			break ;
 		if (ft_isdigit(line[i]))
 			b = 1;

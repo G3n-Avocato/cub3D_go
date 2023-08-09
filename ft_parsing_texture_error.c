@@ -83,7 +83,7 @@ int	check_nb_element(t_data_fd *data, int id)
 
 int	check_if_all_init(t_data_fd *data)
 {
-	int id;
+	int	id;
 
 	id = 0;
 	if (!data->path_no)

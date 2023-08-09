@@ -12,11 +12,11 @@
 
 #include "cub3D.h"
 
-char	*parsing_intro(char **arg, int argc)
+static char	*parsing_intro(char **arg, int argc)
 {
 	int		fd;
 	char	*path;
-	
+
 	if (argc > 2)
 	{
 		printf("Error\nToo many arguments\n");
@@ -24,7 +24,7 @@ char	*parsing_intro(char **arg, int argc)
 	}
 	else if (argc < 2)
 	{
-		printf("Error\nNo map\n");
+		printf("Error\nNo fd\n");
 		return (NULL);
 	}
 	path = arg[1];
@@ -40,11 +40,9 @@ char	*parsing_intro(char **arg, int argc)
 
 static int	ft_parse_line(char *line, t_data_fd *data)
 {
-	int	i;
 	int	b;
 	int	id;	
 
-	i = 0;
 	b = 0;
 	id = check_id(line);
 	if (check_nb_element(data, id) == 1)
@@ -67,12 +65,12 @@ static int	ft_parse_line(char *line, t_data_fd *data)
 	return (0);
 }
 
-int	recover_file(char *path, t_data_fd *data)
+static int	recover_file(char *path, t_data_fd *data)
 {
 	int		fd;
 	int		check;
 	char	*line;
-	
+
 	check = 0;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
@@ -95,40 +93,38 @@ int	recover_file(char *path, t_data_fd *data)
 	return (0);
 }
 
-int main(int argc, char **argv)
+static int	last_check_map(t_data_fd *data)
 {
-	char *path;
-	t_data_fd	data;
+	if (second_read_map(data))
+	{
+		ft_free_tab_map(data);
+		ft_free_struct(data);
+		return (1);
+	}
+	return (0);
+}
+
+int	parsing_data(int argc, char **argv, t_data_fd *data)
+{
+	char	*path;
 
 	path = parsing_intro(argv, argc);
 	if (!path)
 		return (1);
-	ft_init_struct(&data);
-	if (first_read_map(path, &data) == 1)
+	ft_init_struct(data);
+	if (first_read_map(path, data))
 	{
-		ft_free_struct(&data);
+		ft_free_struct(data);
 		return (1);
 	}
-	ft_init_tab_map(&data);
-	if (recover_file(path, &data) == 1)
+	ft_init_tab_map(data);
+	if (recover_file(path, data))
 	{
-		ft_free_tab_map(&data);
-		ft_free_struct(&data);
+		ft_free_tab_map(data);
+		ft_free_struct(data);
 		return (1);
 	}
-	second_read_map(&data);
-/*
-	int i = 0;
-	while (i < data.input->y)
-	{
-		printf("%s \n", data.tab[i]);
-		i++;
-	}
-	printf("%c, x = %d y = %d\n", data.input->pos_j, data.input->pos_s[0], data.input->pos_s[1]);
-*/
-
-
-	ft_free_tab_map(&data);
-	ft_free_struct(&data);
+	if (last_check_map(data))
+		return (1);
 	return (0);
 }

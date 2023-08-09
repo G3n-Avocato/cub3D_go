@@ -43,7 +43,6 @@ void	ft_init_struct(t_data_fd *data)
 	data->input->j = 0;
 	data->input->i = 0;
 	data->input->pos_j = 'A';
-	data->input->pos_s[0] = -5;
 }
 
 void	ft_free_tab_map(t_data_fd *data)

@@ -12,6 +12,13 @@
 
 #include "cub3D.h"
 
+int	check_pts_card(char c)
+{
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+		return (1);
+	return (0);
+}
+
 int	ft_find_map(char *line)
 {
 	int	i;
@@ -28,8 +35,7 @@ int	ft_find_map(char *line)
 			b = 1;
 			i++;
 		}
-		else if (line[i] == 'N' || line[i] == 'S' || \
-			line[i] == 'W' || line[i] == 'E')
+		else if (check_pts_card(line[i]))
 			i++;
 		else
 			return (1);

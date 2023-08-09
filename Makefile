@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC		= clang
+CC		= gcc
 
 CFLAGS	= -Wall -Wextra -Werror -g
 
@@ -26,7 +26,8 @@ SRCS	= ft_parsing.c \
 		  ft_init_struct.c \
 		  ft_parsing_map.c \
 		  ft_parsing_map_utils.c \
-		  ft_parsing_map_error.c
+		  ft_parsing_map_error.c \
+		  main.c
 
 OBJS	= ${SRCS:%.c=%.o}
 

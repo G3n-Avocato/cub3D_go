@@ -21,7 +21,7 @@
 # include <errno.h>
 # include <string.h>
 
-typedef struct	s_data_fd
+typedef struct s_data_fd
 {
 	char			**tab;
 	struct s_map	*input;
@@ -33,7 +33,7 @@ typedef struct	s_data_fd
 	int				*c;
 }t_data_fd;
 
-typedef	struct s_map
+typedef struct s_map
 {
 	int		x;
 	int		y;
@@ -44,15 +44,14 @@ typedef	struct s_map
 }t_map;
 
 //	ft_parse.c	//
-char	*parsing_intro(char **argv, int argc);
-int		recover_file(char *path, t_data_fd *data);
+int		parsing_data(int argc, char **argv, t_data_fd *data);
 
 //	ft_parsing_color.c	//
 int		parsing_colors(char *line, t_data_fd *data, int id);
 
 //	ft_parsing_color_error.c	//
 int		check_digit_error(char *line);
-int		check_data_rgb_error(char *line);
+int		check_data_rgb_error(char *line, int i);
 
 //	ft_parsing_texture.c	//
 int		rec_pos_element(char *line);
@@ -78,9 +77,9 @@ int		ft_parsing_map(t_data_fd *data, char *line);
 //	ft_parsing_map_utils.c	//
 int		first_read_map(char *path, t_data_fd *data);
 int		ft_find_map(char *line);
+int		check_pts_card(char c);
 
 //	ft_parsing_map_error.c	//
-int	second_read_map(t_data_fd *data);
-
+int		second_read_map(t_data_fd *data);
 
 #endif
