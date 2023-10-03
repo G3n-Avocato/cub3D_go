@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing_map_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamasson <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gbertet <gbertet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 20:25:53 by lamasson          #+#    #+#             */
-/*   Updated: 2023/09/22 20:07:15 by lamasson         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:04:17 by gbertet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
-#include "libft/libft.h"
+#include "../../includes/cub3D.h"
 
 int	check_pts_card(char c)
 {
@@ -56,7 +55,7 @@ static int	check_last_line_map(char *line, int fd)
 	while (line)
 	{
 		while (line[i])
-		{	
+		{
 			if (line[i] != ' ' && line[i] != '\n')
 				b = 1;
 			i++;
